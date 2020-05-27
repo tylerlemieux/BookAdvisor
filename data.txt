@@ -1,0 +1,8 @@
+Harry Potter and the Chamber of Secrets|fantasy|magic wizard adventure|-1
+Outliers|non fiction|motivational improvement|4
+Angels and Demons|mystery|conspiracy illuminati|-1
+The Phoenix Project|non fiction|devops IT improvement|-1
+sample title|fantasy|violent dark|-1
+completion|mystery|thrilling|-1
+sample title|fantasy|violent dark|-1
+completion|mystery|thrilling|-1
