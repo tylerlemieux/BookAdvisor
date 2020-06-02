@@ -1,8 +1,11 @@
 package bookadvisor;
 
+import java.util.ArrayList;
 import java.util.Dictionary;
+import java.util.HashMap;
+import java.util.concurrent.Callable;
 
-public abstract class Book {
+public abstract class Book implements IDataRetrievable  {
     private String title;
     private String[] keywords;
     private Integer rating;
@@ -12,7 +15,7 @@ public abstract class Book {
         this.keywords = keywords.split(" ");
         this.rating = -1;
     }
-
+    
     public String getTitle(){
         return this.title;
     }
@@ -35,5 +38,24 @@ public abstract class Book {
     	return this.rating != -1;
     }
     
+    public String concatKeywords(){
+    	String keywords = "";
+		for(String keyword : this.getKeywords()){
+			keywords += keyword + " ";
+		}
+		
+		return keywords;
+    }
+    
     public abstract double getGenreSimilarityWeight(Book book);
+
+    @Override
+	public HashMap<String, String> GetStringValues() {
+    	HashMap<String, String> properties = new HashMap<String, String>();
+    	properties.put("title", this.getTitle());
+    	properties.put("genre", this.getGenre());
+    	properties.put("keywords", this.concatKeywords().trim());
+    	properties.put("rating", Integer.toString(this.getRating()));
+    	return properties;
+    }
 }

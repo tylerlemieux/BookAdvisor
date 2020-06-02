@@ -67,28 +67,9 @@ public class BookAdvisor {
 	
 	private void saveBookData() {
 		// intent: save book data to a file
-		// postcondition: data will be saved with a book on each line with each element separated by |
-		FileWriter fileWriter = null;
-		try{
-			fileWriter = new FileWriter(this.pathToSaveFile);
-			
-			for(Book book : books){
-				fileWriter.write(book.getTitle() + "|" 
-								+ book.getGenre() + "|" 
-								+ String.join(" ", book.getKeywords()) + "|"  
-								+ book.getRating() + "\n");
-			}
-			
-		} catch (Exception ex){
-			System.out.println(this.pathToSaveFile + " does not exist");
-		} finally {
-			try {
-				fileWriter.flush();
-				fileWriter.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
+		// postcondition: data will be saved by the SaveFileHandler
+		SaveFileHandler<Book> saveFileHandler = new SaveFileHandler<Book>(this.pathToSaveFile);
+		saveFileHandler.SaveData(this.books);
 	}
 	
 	private Book instantiateBook(String title, String keywords, String genre) throws UnsupportedGenreException{
@@ -113,34 +94,11 @@ public class BookAdvisor {
 	}
 	
 	private void loadBooks(){
-		// intent: load the books from a file and create the books using polymorphism
-		// postcondition: the books ArrayList should be populated with data from the file
-		// postcondition: if there is a row with an unsupported genre tell the user the file is corrupted
-		this.books = new ArrayList<Book>();
-		
-		try{
-			Scanner bookDataFile = new Scanner(new File(this.pathToSaveFile));
-			
-			try{
-				while(bookDataFile.hasNext()){
-		            String inputLine = bookDataFile.nextLine();
-		            String[] inputs = inputLine.trim().split("\\|");
-		            
-		            
-		            Book bookToAdd;
-		            bookToAdd = instantiateBook(inputs[titleIndex], inputs[keywordsIndex], inputs[genreIndex]);
-		            bookToAdd.setRating(Integer.parseInt(inputs[ratingIndex]));
-		            this.books.add(bookToAdd);	
-				}
-			} catch (UnsupportedGenreException ex){
-				System.out.println(ex.getUnsupportedGenreName() + " is not a supported genre.  Your save file must be corrupted.");
-			} finally {
-	            bookDataFile.close();
-			}
-		} catch (IOException ex) {
-			System.out.println(this.pathToSaveFile + " does not exist");
-		
-		}
+		// intent: load the books from a file and create the books
+		// postcondition: used SaveFileHandler to load the list of books		
+		SaveFileHandler<Book> saveFileHandler = new SaveFileHandler<Book>(this.pathToSaveFile);
+		BookFactory factory = new BookFactory();
+		this.books = saveFileHandler.GetData(factory);
 	}
 	
 }

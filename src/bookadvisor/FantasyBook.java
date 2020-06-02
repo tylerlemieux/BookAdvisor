@@ -1,5 +1,8 @@
 package bookadvisor;
 
+import java.util.ArrayList;
+import java.util.concurrent.Callable;
+
 public class FantasyBook extends Book {
 	public static final String genreName = "fantasy";
 	
