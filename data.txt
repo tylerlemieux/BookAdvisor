@@ -2,3 +2,5 @@ keywords:thrilling crime|genre:mystery|rating:-1|title:Who did it
 keywords:magic hogwarts wizard|genre:fantasy|rating:-1|title:Harry Potter
 keywords:self-help test2|genre:non fiction|rating:-1|title:Non fiction test
 keywords:fake not-real|genre:fantasy|rating:-1|title:Test Fantasy Book
+keywords:who what|genre:mystery|rating:-1|title:tester
+keywords:who what|genre:mystery|rating:4|title:testing
