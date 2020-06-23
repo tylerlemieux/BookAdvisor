@@ -3,4 +3,10 @@ keywords:magic hogwarts wizard|genre:fantasy|rating:-1|title:Harry Potter
 keywords:self-help test2|genre:non fiction|rating:-1|title:Non fiction test
 keywords:fake not-real|genre:fantasy|rating:-1|title:Test Fantasy Book
 keywords:who what|genre:mystery|rating:-1|title:tester
-keywords:who what|genre:mystery|rating:4|title:testing
+keywords:who what|genre:mystery|rating:-1|title:testing
+keywords:spooky|genre:mystery|rating:-1|title:tester 6
+keywords:spooky|genre:mystery|rating:-1|title:test 7
+keywords:spooky|genre:mystery|rating:-1|title:test 8
+keywords:spooky|genre:mystery|rating:-1|title:test 9
+keywords:spooky|genre:mystery|rating:-1|title:test 10
+keywords:spooky mysterious|genre:mystery|rating:-1|title:test 11

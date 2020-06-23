@@ -22,6 +22,7 @@ public class BookAdvisorMain {
 					+ "2. Add a book\n"
 					+ "3. Mark a book as completed\n"
 					+ "4. View Logs\n"
+					+ "5. View past recommendations\n"
 					+ "\n"
 					+ "Type 'exit' to close");
 			if(lastInput.equals("exit")) continue;
@@ -36,6 +37,9 @@ public class BookAdvisorMain {
 			}
 			else if(lastInput.equals("4")){
 				promptViewLogs();
+			}
+			else if(lastInput.equals("5")){
+				viewPastRecommendations();
 			}
 			else {
 				System.out.println("Invalid input");
@@ -111,6 +115,10 @@ public class BookAdvisorMain {
 			RecommendationEngine recommendationEngine = new RecommendationEngine();
 			Book nextBook = recommendationEngine.getRecommendation(bookAdvisor.getBooks());
 			if(nextBook != null){
+				// Save the recommendation to the database
+				RecommendationDb db = new RecommendationDb();
+				db.InsertRecommendation(nextBook);
+				
 				System.out.println("Your next recommended book is " + nextBook.getTitle());
 			}
 			
@@ -147,5 +155,9 @@ public class BookAdvisorMain {
 		}
 		
 	}
-	
+
+	private static void viewPastRecommendations(){
+		RecommendationDb db = new RecommendationDb();
+		db.SelectRecommendations();
+	}
 }
